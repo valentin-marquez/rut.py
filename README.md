@@ -1,12 +1,12 @@
-# RutPy
+# Rut.py
 
-RutPy is a Python library for handling Chilean RUTs (Rol Único Tributario). It provides functions to clean, validate, get the check digit, format, and generate RUTs.
+Rut.py is a Python library for handling Chilean RUTs (Rol Único Tributario). It provides functions to clean, validate, get the check digit, format, and generate RUTs.
 
 This library is based on the JavaScript library [rut.js](https://github.com/jlobos/rut.js) by jlobos. It aims to bring similar functionality to Python developers working with Chilean RUTs.
 
 ## Installation
 
-You can install RutPy using pip:
+You can install Rut.py using pip:
 
 ```shell
 pip install rutpy
@@ -77,4 +77,4 @@ Contributions are welcome. If you find any issues, have any improvement ideas, o
 
 ## License
 
-RutPy is distributed under the [MIT License](https://opensource.org/licenses/MIT).
+Rut.py is distributed under the [MIT License](https://opensource.org/licenses/MIT).
