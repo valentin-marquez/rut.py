@@ -1,4 +1,4 @@
-# RutPy
+# rut.py
 
 RutPy is a Python library for handling Chilean RUTs (Rol Único Tributario). It provides functions to clean, validate, get the check digit, format, and generate RUTs.
 
