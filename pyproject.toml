@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.poetry]
+name = "rut.py"
+version = "1.0.0"
+description = "Librería para el manejo de RUTs chilenos"
+authors = ["Valentin Marquez <Valentin13.mail@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2"
+
