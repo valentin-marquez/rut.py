@@ -24,7 +24,7 @@ jobs:
           pip install wheel twine
 
       - name: Construir el paquete
-        run: python setup.py sdist bdist_wheel
+        run: python rutpy/setup.py sdist bdist_wheel
 
       - name: Publicar en PyPI
         env:
