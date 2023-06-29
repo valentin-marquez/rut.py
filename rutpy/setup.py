@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='rut.py',
+    name='rutpy',
     version='1.0.1',
     description='Librería para el manejo de RUTs chilenos',
     author='Valentin Marquez',
