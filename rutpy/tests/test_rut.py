@@ -1,5 +1,7 @@
 import unittest
-from rutpy import clean, validate, get_check_digit, format, generate
+
+from rutpy import clean, format_rut, generate, get_check_digit, validate
+
 
 class RutpyTestCase(unittest.TestCase):
     def test_clean(self):
@@ -23,7 +25,7 @@ class RutpyTestCase(unittest.TestCase):
     def test_format(self):
         ruts = ['17.335.995-0', '20.709.073-5']
         expected_results = ['17.335.995-0', '20.709.073-5']
-        formatted_ruts = [format(rut) for rut in ruts]
+        formatted_ruts = [format_rut(rut) for rut in ruts]
         self.assertEqual(formatted_ruts, expected_results)
 
     def test_generate(self):

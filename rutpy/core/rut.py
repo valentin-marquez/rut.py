@@ -1,7 +1,25 @@
-import re
-import random
+"""
+rut.py
 
-from typing import Tuple
+This module provides functions for handling Chilean RUTs (Rol Único Tributario).
+It includes functions to clean, validate, get the check digit, format, and generate RUTs.
+
+Authors:
+- Valentin Marquez
+
+License:
+MIT License
+
+Functions:
+- clean(rut: str) -> str
+- validate(rut: str) -> bool
+- get_check_digit(input: str) -> str
+- format(rut: str, dots: bool = True, dash: bool = True) -> str
+- generate(n: int = 1) -> str or List[str]
+"""
+import random
+import re
+from typing import List, Union
 
 
 def clean(rut: str) -> str:
@@ -12,6 +30,10 @@ def clean(rut: str) -> str:
 
     Returns:
         str: The cleaned rut
+    
+    Examples:
+        >>> clean("35.114.652-4")
+        '351146524'
     """
     return re.sub(r'^0+|[^0-9kK]+', '', rut)
 
@@ -26,7 +48,7 @@ def validate(rut: str) -> bool:
         bool: Whether the rut is valid or not
 
     Examples:
-        >>> validate("60487586-4")
+        >>> validate("4612837-0")
         True
     """
     if not isinstance(rut, str):
@@ -52,11 +74,11 @@ def validate(rut: str) -> bool:
     return v == rut[-1]
 
 
-def get_check_digit(input: str) -> str:
+def get_check_digit(digit: str) -> str:
     """Function to get the check digit of a rut
 
     Args:
-        input (str): The rut to get the check digit from
+        digit (str): The rut to get the check digit from
 
     Raises:
         ValueError: If the rut is invalid
@@ -66,15 +88,14 @@ def get_check_digit(input: str) -> str:
 
     Examples:
         >>> get_check_digit("60487586")
-        '4'
+        '2'
     """
-    rut = list(map(int, clean(input)))
+    rut = list(map(int, clean(digit)))
 
     if len(rut) == 0 or any(map(lambda x: x != x, rut)):
-        raise ValueError(f'"{input}" as RUT is invalid')
+        raise ValueError(f'"{digit}" as RUT is invalid')
 
     modulus = 11
-    initial_value = 0
     sum_result = sum(
         current_value * ((index % 6) + 2)
         for index, current_value in enumerate(reversed(rut))
@@ -90,7 +111,7 @@ def get_check_digit(input: str) -> str:
         return str(check_digit)
 
 
-def format(rut: str, dots: bool = True, dash: bool = True) -> str:
+def format_rut(rut: str, dots: bool = True, dash: bool = True) -> str:
     """Function to format a rut
 
     Args:
@@ -122,26 +143,24 @@ def format(rut: str, dots: bool = True, dash: bool = True) -> str:
     return result
 
 
-def generate(n: int = 1) -> str:
-    """Genera RUTs chilenos aleatorios válidos.
+def generate(num: int = 1) -> Union[str, List[str]]:
+    """Generates random valid Chilean RUTs.
 
     Args:
-        quantity (int, optional): Cantidad de RUTs a generar. Por defecto, es 1.
+        num (int, optional): Number of RUTs to generate. Defaults to 1.
 
     Returns:
-        str or List[str]: El RUT generado. Si la cantidad es mayor a 1, se devuelve una lista de RUTs.
-
+        str or List[str]: The generated RUT. If the number is greater than 1, a list of RUTs is returned.
     """
     ruts = []
-    for _ in range(n):
+    for _ in range(num):
         rut_base = random.randint(1000000, 25000000)
         rut = str(rut_base)
         dv = get_check_digit(rut)
-        rut = format(rut + dv)
+        rut = format_rut(rut + dv)
         ruts.append(rut)
 
-    if n == 1:
-        return ruts[0]
-    else:
-        return ruts
-    
+    if num == 1:
+        return [ruts[0]]
+
+    return ruts
