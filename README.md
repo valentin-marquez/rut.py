@@ -73,7 +73,7 @@ print(rut)  # Output: A randomly generated valid RUT
 
 ## Contributions
 
-Contributions are welcome. If you find any issues, have any improvement ideas, or want to add new features, you can open an issue or submit a pull request on the [GitHub repository](https://github.com/your_username/your_repository).
+Contributions are welcome. If you find any issues, have any improvement ideas, or want to add new features, you can open an issue or submit a pull request on the [GitHub repository](https://github.com/NozzOne/rut.py).
 
 ## License
 
